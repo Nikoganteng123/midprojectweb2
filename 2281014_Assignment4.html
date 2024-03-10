@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 4</title>
+</head>
+<body>
+    <script>
+        let StudentPortfolio = {
+            name: "Nicholas",
+            studentId: "2281014",
+            birthdate: "7 November 2004",
+            courses: ["web2", "Linear Algebra"],
+            skills: [],
+
+            addCourse: function(course){
+                this.courses.push(course)
+            },
+            addSkills: function(skill){
+                this.skills.push(skill)
+            },
+            getAge: function(tahunKelahiran){
+                let tahunSekarang = new Date().getFullYear()
+                let umur = tahunSekarang - tahunKelahiran
+                console.log("Umur: " + umur + " tahun")
+                return umur;
+            },
+            displayPortfolio: function(){
+                console.log(StudentPortfolio)
+            }
+        }
+
+        console.log(StudentPortfolio.courses)
+
+        // dibawah ini sudah ditambahkan courses saya
+
+        StudentPortfolio.addCourse("Research")
+        StudentPortfolio.addCourse("Daniel")
+
+        console.log(StudentPortfolio.courses)
+        
+        // dibawah ini sudah ditambahkan skills saya
+
+        StudentPortfolio.addSkills("BasketBall")
+        StudentPortfolio.addSkills("Leader")
+
+        console.log(StudentPortfolio.skills)
+
+        // dibawah ini saya menambahkan function untuk mencari umur saya dicari melalui tahun
+
+        StudentPortfolio.getAge(2004)
+        
+        StudentPortfolio.displayPortfolio()
+    </script>
+</body>
+</html>

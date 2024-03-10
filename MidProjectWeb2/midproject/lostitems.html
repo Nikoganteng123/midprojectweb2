@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost and Found</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body class="bg-gray-100">
+    <div id="app">
+        <nav
+          class="bg-white px-2 sm:px-4 py-2.5 dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600"
+        >
+          <div
+            class="container flex flex-wrap items-center justify-between mx-auto"
+          >
+            <a href="https://fti.unai.edu/" class="flex items-center">
+              <img
+                src="images/linda.jpeg"
+                class="h-6 mr-3 sm:h-20"
+              />
+              <span
+                class="self-center text-xl font-semibold whitespace-nowrap dark:text-white"
+                >Lost & Found</span
+              >
+            </a>
+            <div class="flex md:order-2">
+              
+              <button
+                data-collapse-toggle="navbar-sticky"
+                type="button"
+                class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="navbar-sticky"
+                aria-expanded="false"
+              >
+                <span class="sr-only">Open main menu</span>
+                <svg
+                  class="w-6 h-6"
+                  aria-hidden="true"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+            <div
+              class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
+              id="navbar-sticky"
+            >
+              <ul
+                class="flex flex-col p-4 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+              >
+                
+                <li>
+                  <a
+                    href="index.html"
+                    class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    >Users</a
+                  >
+                </li>
+                <li>
+                    <a
+                      href="lostitems.html"
+                      class="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white"
+                      aria-current="page"
+                      >Lost Items</a
+                    >
+                  </li>
+                <li>
+                  <a
+                    href="founditems.html"
+                    class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    >Found Items</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="employees.html"
+                    class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                    >Employees</a
+                  >
+                </li>
+                <li>
+                    <a
+                      href="take.html"
+                      class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-white dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
+                      >Take</a
+                    >
+                  </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+  
+        <div class="flex flex-wrap items-center justify-between mt-20 p-10">
+          <div class="flex-1">
+            <h1
+              class="mb-4 text-xl font-bold leading-none tracking-tight text-gray-900 dark:text-white"
+            >
+              Lost Items
+            </h1>
+            <div class="relative overflow-x-auto">
+              <table
+                class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+              >
+                <thead
+                  class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+                >
+                  <tr>
+                    <th class="px-6 py-3">ID</th>
+                    <th class="px-6 py-3">Description</th>
+                    <th class="px-6 py-3">Picture</th>
+                    <th class="px-6 py-3">Date Reported</th>
+                    
+                    <th class="px-6 py-3">Contact Person</th>
+                    <th class="px-6 py-3">Actions</th>
+
+
+                  </tr>
+                </thead>
+                <tr
+                  class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
+                  v-for="user in users"
+                >
+                  <td class="px-6 py-4">{{ user.id }}</td>
+                  <td class="px-6 py-4">{{ user.desc }}</td>
+                  <td class="px-6 py-4"><img src="user.img"></td>
+                  
+                  <td class="px-6 py-4">{{ user.date }}</td>
+                  
+                  <td class="px-6 py-4">{{ user.cp }}</td>
+                  <td class="px-6 py-4">
+                    <button
+                      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                      @click="getEditUser(user)"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-1.5 mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                      @click="deleteUser(user)"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+  
+          <div class="flex-1 m-4 p-4 border border-gray-200 rounded-xl">
+            <form @submit.prevent="" class="mt-4">
+              <h1
+                class="mb-4 text-xl font-bold leading-none tracking-tight text-gray-900 dark:text-white"
+              >
+                Add Lost Items
+              </h1>
+              <div class="mb-3">
+                <label
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Description & Last Location:
+                </label>
+                <input
+                  type="textarea"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  v-model="user.desc"
+                  placeholder="Description"
+                  required
+                />
+              </div>
+              <div class="mb-3">
+                <label
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Image :
+                </label>
+                <input
+                  type="file"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  v-model="user.img"
+                  placeholder="Image"
+                />
+              </div> 
+              <div class="mb-3">
+                <label
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Date :
+                </label>
+                <input
+                  type="date"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  v-model="user.date"
+                  placeholder="Location"
+                  required
+                />
+              </div>  
+              <div class="mb-3">
+                <label
+                  class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >Contact Person:
+                </label>
+                <input
+                  type="text"
+                  class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  v-model="user.cp"
+                  placeholder="Contact Person"
+                  required
+                />
+              </div> 
+                     
+              <div class="mb-3">
+                <button
+                  v-if="!isEdit"
+                  @click="addUser"
+                  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                  type="submit"
+                >
+                  Add Lost Item
+                </button>
+                <button
+                  v-if="isEdit"
+                  @click="updateUser"
+                  class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                  type="submit"
+                >
+                  Update Lost Item
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    <script>
+        const { createApp } = Vue;
+
+        createApp({
+            data() {
+                return {
+                    users: [],
+                    user: {
+                        desc: '',
+                        img: '',
+                        date: '',
+                        status: '',
+                        cp: ''
+                    },
+                    isEdit: false,
+                    userIdSelected: null
+                }
+              },
+              mounted() {
+              this.getUsers();
+            },
+            methods: {
+                getUsers() {
+                    axios.get('https://65e964cd4bb72f0a9c515e3a.mockapi.io/lostItems')
+                        .then((response) => {
+                            this.users = response.data;
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
+                },
+                addUser() {
+                    axios.post("https://65e964cd4bb72f0a9c515e3a.mockapi.io/lostItems", {
+                            desc: this.user.desc,
+                            img: this.user.img,
+                            date: this.user.date,
+                            status: this.user.status,
+                            cp: this.user.cp
+                        })
+                        .then((response) => {
+                            this.getUsers();
+                            alert("New data has been saved");
+                            console.log(response);
+                            this.resetForm();
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
+                },
+                getEditUser(user) {
+                    this.isEdit = true;
+                    this.userIdSelected = user.id;
+                    this.user.desc = user.desc;
+                    this.user.img = user.img;
+                    this.user.date = user.date;
+                    this.user.status = user.status;
+                    this.user.cp = user.cp;
+                },
+                updateUser() {
+                    axios.put(`https://65e964cd4bb72f0a9c515e3a.mockapi.io/lostItems/${this.userIdSelected}`, {
+                            desc: this.user.desc,
+                            img: this.user.img,
+                            date: this.user.date,
+                            status: this.user.status,
+                            cp: this.user.cp
+                        })
+                        .then((response) => {
+                            this.getUsers();
+                            alert("The Data has been updated");
+                            console.log(response);
+                            this.isEdit = false;
+                            this.resetForm();
+                        })
+                        .catch((error) => {
+                            console.log(error);
+                        });
+                },
+                deleteUser(user) {
+                    if (confirm("Are you sure you want to delete this user?")) {
+                        axios.delete(`https://65e964cd4bb72f0a9c515e3a.mockapi.io/lostItems/${user.id}`)
+                            .then((res) => {
+                                alert("The Data has been deleted");
+                                this.getUsers();
+                                this.resetForm();
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                            });
+                    }
+                },
+                resetForm() {
+                    this.user.desc = '';
+                    this.user.img = '';
+                    this.user.date = '';
+                    this.user.status = '';
+                    this.user.cp = '';
+                }
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

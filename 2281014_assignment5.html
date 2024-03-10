@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetching the classmates for assignment 5</title>
+</head>
+<body>
+    <script>
+        fetch('2281014_classmates.json')
+            .then(response => response.json())
+            .then(data =>{
+                console.log(data)
+                console.log(data.classmates)
+
+                for(let i=0; i<data.classmates.length; i++) {
+                    console.log("Id                 : " + data.classmates[i].id)
+                    console.log("Name               : " + data.classmates[i].name)
+                    console.log("Grade              : " + data.classmates[i].grade)
+                    console.log(data.classmates[i].favoriteSubject)
+                    console.log(data.classmates[i].hobbies)
+                    
+                    console.log("Personal Goals     : "+data.classmates[i].personalGoals)
+                }
+            })
+    </script>
+</body>
+</html>

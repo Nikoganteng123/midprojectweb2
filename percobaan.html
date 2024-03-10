@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn VueJS with axios for REST API</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+</head>
+<body>
+    <div id="app">
+        <table>
+
+            <tr>
+                <th>Id</th>
+                <th>NIM</th>
+                <th>Password</th>
+            </tr>
+
+            <tr v-for="user in users">
+                <td>{{user.id}}</td>
+                <td>{{user.nim}}</td>
+                <td>{{user.pw}}</td>
+                <td>
+                    <button @click="getEditUser(user)">Edit</button>
+                    <button @click="deleteUser(user)">Delete</button>
+                </td>
+            </tr>
+
+        </table>
+        <button @click="getUsers">Get Users</button>
+
+        <br><br>
+
+        <form @submit.prevent="" action="">
+            <h3>Form User</h3>
+            <label for="">NIM: </label><input v-model="user.nim" type="text"><br>
+            <label for="">Password:</label> <input v-model="user.pw" type="text"><br>
+            <button v-if="!isEdit" @click="addUser">Add User</button>
+            <button v-if="isEdit" @click="updateUser">Update User</button>
+
+        </form>
+
+    </div>
+    <script>
+        const { createApp } = Vue 
+
+        createApp({
+            data(){
+                return{
+                    users: [],
+                    user:{
+                        nim: '',
+                        pw: ''
+                    },
+                    isEdit: false,
+                    userIdSelected: null
+
+                }
+            },
+            methods:{
+                getUsers(){
+                    axios
+                        .get('https://65e964cd4bb72f0a9c515e3a.mockapi.io/users')
+                        .then((response) => {
+                            this.users = response.data
+                        })
+                },
+                addUser(){
+                    axios
+                        .post("https://65e964cd4bb72f0a9c515e3a.mockapi.io/users",{
+                            nim: this.user.nim,
+                            pw: this.user.pw
+                        })
+                        .then((response) =>{
+                            this.getUsers()
+                            alert("New user has been saved")
+                            console.log(response)
+                            this.resetForm()
+                        })
+                        .catch((error) => {
+                            console.log(error)
+                        })
+                },
+                getEditUser(user) {
+                    this.isEdit = true
+                    this.userIdSelected = user.id
+                    this.user.nim = user.nim
+                    this.user.pw = user.pw
+                },
+                updateUser(){
+                    axios
+                    .put(`https://65e964cd4bb72f0a9c515e3a.mockapi.io/users/${this.userIdSelected}`,
+                        {
+                            nim: this.user.nim,
+                            pw: this.user.pw
+                        }
+                    )
+                    .then((response) => {
+                        this.getUsers()
+                            alert("User has been updated")
+                            console.log(response)
+                            this.resetForm()
+                    })
+                    .catch((error) => {
+                            console.log(error)
+                        })
+                },
+                deleteUser(user) {
+                    if(confirm("Are you user want to delete this user?")) {
+                    axios
+                        .delete(`https://65e964cd4bb72f0a9c515e3a.mockapi.io/users/${user.id}`
+                        )
+                        .then((res) => {
+                            // handle success
+                            alert("User has been deleted")
+                            this.getUsers()
+                            this.resetForm()
+                        })
+                        .catch((err) => {
+                            // handle error
+                            console.log(err)
+                        })
+                    }
+                },
+
+                resetForm(){
+                    this.user.nim = '',
+                    this.user.pw = '',
+                    this.user.lastname = '',
+                    this.user.email = '',
+                    this.user.avatar = ''
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>

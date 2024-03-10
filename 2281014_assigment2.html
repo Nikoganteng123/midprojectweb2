@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>web 2 Assigment 2</title>
+</head>
+<body>
+    <script>
+        // // task 1
+        // function nikoGameMeetingMultiply(time,meeting){
+        //     return time*meeting
+        // }
+        // console.log(nikoGameMeetingMultiply(6,3))
+
+        // function nikoGameMeeting3Par(time,meeting,goodbye){
+        //     console.log(time/meeting/goodbye)
+        // }
+        // nikoGameMeeting3Par(20,2,5)
+
+        // function nikoGameMeeting4Par(a,b,c,d){
+        //     let result = (a % b) % (c % d); 
+        //     return result
+        // }
+        // let a=30
+        // let b=6
+        // let c=5
+        // let d=2
+
+        // console.log(nikoGameMeeting4Par(a,b,c,d))
+
+        // Task 2
+        let nikoGameMeetingMultiply = (time, meeting) => time * meeting;
+        console.log(nikoGameMeetingMultiply(6, 3));
+
+        
+        let nikoGameMeeting3Par = (time, meeting, goodbye) => console.log(time / meeting / goodbye);
+        nikoGameMeeting3Par(20, 2, 5);
+
+        
+        let nikoGameMeeting4Par = (a, b, c, d) => {
+            let result = (a % b) % (c % d);
+            return result;
+        };
+
+        let a = 30;
+        let b = 6;
+        let c = 5;
+        let d = 2;
+
+        console.log(nikoGameMeeting4Par(a, b, c, d));
+
+
+        // task 3
+        let makeCoffee = function (coffeeType) {
+        return `Brewing a cup of ${coffeeType} coffee! ☕`;
+        };
+
+        console.log(makeCoffee('kopi jagung'));
+
+        // task 4
+        function playGame() {
+        const playerName = 'nikoganteng123';
+        let score = 0;
+
+        function increaseScore(points) {
+            score += points;
+            console.log(`${playerName}'s score: ${score}`);
+        }
+
+        increaseScore(10);
+        }
+
+        playGame();
+
+
+        function createGameCounter() {
+        let gameScore = 0;
+
+        function updateScore(points) {
+        gameScore += points;
+        console.log(`Game Score: ${gameScore}`);
+        }
+
+        return updateScore;
+        }
+
+const playRound = createGameCounter();
+playRound(5); // Game Score: 5
+playRound(8); // Game Score: 13
+
+
+
+
+    </script>
+</body>
+</html>

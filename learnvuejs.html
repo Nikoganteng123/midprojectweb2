@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn VUEjs </title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        .red{
+            color:red;
+        }
+        .blue{
+            color:blue;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app">
+        {{message}} from {{name}} my age is {{umur}} year old
+        <br>
+        Im {{status}} and from room number {{room}}, and my hobbies are: {{hobbies}}
+        <br>
+        and my Favorite Subject is {{favoriteSubject}}
+        <br>
+        Message: <input type="text" v-model="message"><br>
+        Name: <input type="text" v-model="name"><br>
+        <h1 v-if="on">Displayed is property on is true</h1>
+        <h1 v-else>Displayed if property on is false</h1>
+        <br>
+
+        Age: <input type="text" v-model="age">
+
+        <h3 v-if="age <= 17">You are still young</h3>
+        <h3 v-else="">you are old hahaha</h3><br>
+
+        <img v-bind:src="image" alt="Unai chapel"><br>
+
+        <h2 v-bind:class="textColor">This is a tittle</h2>
+        textColor: <input type="text" v-model="textColor">
+
+        <br>
+
+        <li v-for="item in items">
+            {{item.message}}
+        </li>
+        <br>
+        <li v-for="hobby in hobbies">
+            {{hobby}}
+        </li>
+        <br>
+        Favorite Subject: {{favoriteSubject.name}} and whyy?? {{favoriteSubject.why}}
+        <br>
+        <button v-on:click="count++">Add 1</button>
+        <p>Count is: {{count}}</p>
+    </div>
+
+    <script>
+        const {createApp} = Vue
+
+        createApp({
+            data() {
+                return{
+                    count:0,
+                    items: [{message: 'A'},{message:'B'}],
+                    textColor:'red',
+                    image: 'tuguUnai.jpg',
+                    on: false,
+                    age: 17,
+                    message: 'Hello Vue',
+                    name: 'Nicholas',
+                    umur: 19,
+                    status: 'inside',
+                    room: 613,
+                    hobbies:['Badminton','Basketball','Gaming'],
+                     //ini pake array di vue js
+
+                    favoriteSubject:{
+                        name: 'Website',
+                        why : 'fun',
+                        favSubject : 'Javascript'
+
+                    }
+
+                    
+                }
+            }
+        }).mount('#app')
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Learn VueJS part 2</title>
+    <meta>
+</head>
+<body>
+    <div id="app"> {{ message }}
+        <br>
+        {{ name }}
+        <button v-on:click="count++">Add 1</button>
+        <button v-on:click="count--">Minus 1</button>
+        <p>Count is: {{ count }}</p>
+
+        <h3 v-if="count >=10">Congratulations! You have 10 counts or more!</h3>
+
+        Products:
+        <ul>
+            <li v-for="product in products">
+                {{product}}
+            </li>
+        </ul>
+
+        Items:
+        <ul>
+            <li v-for="item in items">
+                {{item.productName}} (${{item.productPrice}})
+            </li>
+        </ul>
+    
+        <button v-on:click="doAlert">Do Alert</button>
+        
+        <br>
+
+        <button v-on:click="writeToConsole">Write to Console</button>
+
+        <br>
+
+        <h3>Chat Application</h3>
+        <ul>
+            <li v-for="message in messages">
+                {{message}}
+            </li>
+        </ul>
+        <input v-model="newMessage" type="text">
+        <button @click="addMessage">Send</button>
+    
+        <br><br>
+
+        <button @click="alertName">Alert Your Name</button>
+        <br><br>
+
+        <button @click="tambahKata">Coba Pencet</button>
+        <div v-if="tambahKelihatan">
+            <p>halooooooooooo nama sayaaa nikooo ini ngetestt sajaaaaaa</p>
+        </div>
+    
+        <br>
+        <br>
+
+        <button @click="pindahGugel">Pindah ke Google</button>
+
+        <br>
+        <br>
+
+        <button @click="backgroundMerah">Ubah background</button>
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <script>
+        const {createApp} = Vue
+
+        createApp({
+            data() {
+                return {
+                    tambahKelihatan: false,
+                    newMessage: '',
+                    messages: [],
+                    message: 'Hello viuuuu',
+                    name: "Nicholas Palapessy",
+                    count: 0,
+                    products: ['Macbook Pro', 'Macbook Air','iPad'],
+                    items:[
+                        {productName:'Samsung S27', productPrice: 77},
+                        {productName:'Xiamoi S27', productPrice: 99},
+                        {productName:'Oppo S27', productPrice: 100}
+                    ]
+
+                }
+            },
+            methods: {
+                doAlert(){
+                    alert('HI')
+                },
+                writeToConsole(){
+                    console.log('This is written  to the console')
+                },
+                addMessage(){
+                    this.messages.push(this.newMessage);
+                    this.newMessage=''
+                },
+                alertName(){
+                    alert(this.name)
+                },
+                tambahKata(){
+                    this.tambahKelihatan = true
+                },
+                pindahGugel(){
+                    window.location.href = "https://www.google.com";
+                },
+                backgroundMerah(){
+                    document.body.style.backgroundColor = "red";
+                }
+            }
+        }).mount('#app')
+    </script>
+    
+</body>
+</html>

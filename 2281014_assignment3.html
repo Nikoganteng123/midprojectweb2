@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // ini adalah 5 makanan favorit saya
+        let niko2281014foods = ["mie","ayam","kangkung","kwetiaw","nasi"]
+        console.log(niko2281014foods)
+
+        // ini saya menambahkan niko14 ke dalam array saya, karena disuru nama + 2 digit di belakang nim
+        niko2281014foods.push('niko14')
+        console.log(niko2281014foods)
+
+        // ini saya mengeluarkan array terakhir
+        niko2281014foods.pop()
+        console.log(niko2281014foods)
+
+        // ini saya menghilangkan array pertama
+        niko2281014foods.shift()
+        console.log(niko2281014foods)
+
+        // ini saya menambahkan array di awalan, tambahkan mie jadi bisa seperti semula
+        niko2281014foods.unshift('mie')
+        console.log(niko2281014foods)
+
+        // ini saya menerapkan method slice ke array baru
+        let subArray = niko2281014foods.slice(2,4)
+        console.log(subArray)
+
+        // ini saya menerapkan method concat ke dalam array saya
+        let niko2281014drinks = ['susu','teh','kopi','cola','air']
+        let mix = niko2281014foods.concat(niko2281014drinks)
+        console.log(mix)
+
+        // ini saya mencoba untuk sorting array saya dari alfabet
+        let sorted = mix.sort()
+        console.log(sorted)
+
+        // ini saya mencoba untuk reverse
+        let reverse = sorted.reverse()
+        console.log(reverse)
+
+        // ini saya mencoba untuk melakukan method join
+        let join = reverse.join(', ')
+        console.log(join)
+
+        // ini saya mecnoba untuk melakukan method split untuk membalikan string menjadi array
+        let split = join.split(',')
+        console.log(split)
+
+
+    </script>
+</body>
+</html>

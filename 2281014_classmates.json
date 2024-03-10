@@ -1,0 +1,94 @@
+{
+    "classmates": [
+        {
+            "id": 2281013,
+            "name": "Joe Michael",
+            "age": 19,
+            "grade": "Mythic",
+            "favoriteSubject": {
+                "subjectName": "Math",
+                "reasonForInterest": "Karna mengasah otak",
+                "favoriteTopic": "Algebra"
+            },
+            "hobbies":{
+                "hobbyName":"Singing",
+                "yearsInvolved":"2020",
+                "skill Level":"Intermediate"
+            },
+            "personalGoals":"To be a better man"
+
+        },
+        {
+            "id": 2281038,
+            "name": "Franly Joshua Ngantung",
+            "age": 19,
+            "grade": "Epic",
+            "favoriteSubject": {
+                "subjectName": "PBG",
+                "reasonForInterest": "Karna mengasah jari",
+                "favoriteTopic": "function"
+            },
+            "hobbies":{
+                "hobbyName":"playing some cookies",
+                "yearsInvolved":"2004",
+                "skill Level":"Professional"
+            },
+            "personalGoals":"To be a professional badminton player"
+
+        },
+        {
+            "id": 2232075,
+            "name": "Ridhoy Hutagaol",
+            "age": 19,
+            "grade": "Legend",
+            "favoriteSubject": {
+                "subjectName": "Auditing",
+                "reasonForInterest": "Karna suka memeriksa laporan keuangan",
+                "favoriteTopic": "Algebra"
+            },
+            "hobbies":{
+                "hobbyName":"berenang",
+                "yearsInvolved":"2020",
+                "skill Level":"Beginner"
+            },
+            "personalGoals":"To be a singer"
+
+        },
+        {
+            "id": 2251039,
+            "name": "Novalinda Amelia",
+            "age": 19,
+            "grade": "GrandMaster",
+            "favoriteSubject": {
+                "subjectName": "Anatomi Fisiologi",
+                "reasonForInterest": "Karna dosennya ngajarnya bagus",
+                "favoriteTopic": "Human Body"
+            },
+            "hobbies":{
+                "hobbyName":"Playing Electric Guitar",
+                "yearsInvolved":"2016",
+                "skill Level":"Professional"
+            },
+            "personalGoals":"To be my wife"
+
+        },
+        {
+            "id": 2281014,
+            "name": "Nicholas Palapessy",
+            "age": 19,
+            "grade": "Mythic",
+            "favoriteSubject": {
+                "subjectName": "Chemistry",
+                "reasonForInterest": "Karna bisa mencampurkan bahan2 lain",
+                "favoriteTopic": "Larutan"
+            },
+            "hobbies":{
+                "hobbyName":"basketball",
+                "yearsInvolved":"2006",
+                "skill Level":"Intermediate"
+            },
+            "personalGoals":"To be Linda's husband"
+
+        }
+    ]
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1 web programming 2</title>
+</head>
+<body>
+    <div id="Nicholas">Ini div pertamaaa
+        <div id="anaknyaniko">Ini mau coba child</div>
+    </div>
+
+    <p id="Palapessy">Ini paragraf pertama</p>
+    <p id="Palapessy">Ini paragraf kedua</p>
+
+    <button id="NicholasPalapessy" class="baten">Click Me!</button>
+
+    <br><br>
+
+
+
+    <br><br>
+
+    <form id="myform" onsubmit="return validateForm()" action="">
+        <input id="name" type="text" > <br><br>
+        <button id="submit">Submit</button>
+    </form>
+
+
+
+    <script>
+
+        const Nicholas = document.getElementById('Nicholas')
+        Nicholas.innerHTML = 'ini div pertama tapi di edit'
+
+        const Palapessy = document.getElementsByTagName('p')[1];
+        Palapessy.innerHTML = 'ini textnya diganti tapi yang p kedua'
+
+        const baten = document.querySelector('.baten')
+        baten.style.backgroundColor = 'red'
+
+        const NicholasPalapessy = document.getElementById('NicholasPalapessy')
+        NicholasPalapessy.addEventListener('click', function() {
+            Palapessy.style.backgroundColor = 'blue';
+            Palapessy.style.fontSize = 'x-large'
+        });
+        
+        const submit = document.getElementById('submit')
+
+        function validateForm(){
+            const name = document.getElementById('name').value;
+            if(name === ''){
+                alert('Please enter a name')
+                return false;
+            }
+            return true;
+        }
+
+        let parent = document.getElementById("NicholasPalapessy").parentNode;
+    console.log("Parent: " + parent.tagName);
+
+    let children = document.getElementById("Nicholas").childNodes;
+    for (let i = 0; i < children.length; i++) {
+        console.log("Child " + (i + 1) + ": " + children[i].nodeName);
+    }
+
+    console.log("First Child: " + document.getElementById("Nicholas").firstChild.nodeName);
+    console.log("Last Child: " + document.getElementById("Nicholas").lastChild.nodeName);
+
+    console.log("Next Sibling: " + document.getElementById("Palapessy").nextSibling.nodeName);
+    console.log("Previous Sibling: " + document.getElementById("Palapessy").previousSibling.nodeName);
+
+
+
+
+
+
+        
+
+    </script>
+</body>
+</html>

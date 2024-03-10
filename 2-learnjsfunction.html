@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn JS Functions</title>
+</head>
+<body>
+    <script>
+        function nikoganteng(){
+            console.log('Hi');
+        }
+        nikoganteng();
+
+        function nikoPlus(one){
+            console.log("niko & " + one)
+        }
+
+        nikoPlus("Linda")
+
+        function nikoPlusChildren(one, firstChild, secondChild){
+            console.log("Niko & " + one + " & " + firstChild + " & " + secondChild)
+        }
+
+        let plusOne = "Linda"
+        let firstChild = "wwkwkkwkwkwk"
+        let secondChild = "wqwqwqwqwqwq"
+
+        nikoPlusChildren(plusOne, firstChild, secondChild)
+
+        function nikoSum(a,b,c){
+            return a+b+c
+        }
+
+        let resultSum = nikoSum(1,2,3)
+        console.log(resultSum)
+
+        function nikoScope(x){
+            let y=2
+            return x + y
+        }
+        let y = 3
+        let x = 6
+        let resultNikoScope = nikoScope(5);
+        console.log(resultNikoScope)
+        console.log(y)
+
+        // tradiotional function
+
+        // function nikoMultiply(a,b){
+        //     return a*b
+        // }
+
+        // console.log(nikoMultiply(3,3))
+
+        // Arrow function
+        // let nikoMultiply = (a,b) => {
+        //     return a*b
+        // }
+        // console.log(nikoMultiply(3,3))
+
+        // Arrow function shorter version
+
+        let nikoMultiply = (a,b) => a*b
+
+        
+        console.log(nikoMultiply(3,3))
+        
+        // function sayHi(name){
+        //     return "Hi, "+ name
+        // }
+        // console.log(sayHi("Nicholas"))
+
+        let sayHi = name => "Hi, "+name
+        console.log(sayHi("Nicholas"))
+    </script>
+</body>
+</html>
